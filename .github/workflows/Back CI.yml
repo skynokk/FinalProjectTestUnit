@@ -30,4 +30,6 @@ jobs:
         run: |
           cd Back
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-          php ./vendor/bin/phpunit
+          php bin/console doctrine:migration:migrate
+          php bin/console doctrine:fixtures:load
+          php /bin/phpunit
