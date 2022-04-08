@@ -29,4 +29,3 @@ jobs:
       - name: Lancement test Back
         run: |
           cd Back
-          composer install
