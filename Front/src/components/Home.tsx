@@ -10,7 +10,7 @@ const Home = ({ setRoute }: { setRoute: (data: any) => void }) => {
       <div>
         {products.map((product) => {
           return (
-            <React.Fragment>
+            <React.Fragment key={product.id}>
               <div
                 onClick={() => setRoute({ route: "product", data: product })}
               >
