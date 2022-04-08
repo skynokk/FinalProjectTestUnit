@@ -29,11 +29,6 @@ jobs:
       - name: Lancement test Back
         run: |
           cd Back
-          docker-compose build
-          docker-compose up -d
-          docker-compose exec app bash
           composer install
-          php bin/console doctrine:migration:migrate
-          php bin/console doctrine:fixtures:load
           php bin/phpunit
 
