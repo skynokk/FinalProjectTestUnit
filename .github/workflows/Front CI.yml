@@ -25,13 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a set of commands using the runners shell
-      - name: Lancement test Front
+      - name: Installation des dépendances
         run: |
           cd Front
           npm ci
-          npm run test
-          npm start &
-          # npx cypress run --browser chrome
-          # npm run cypress:open
-          
+      - name: Lancement test Front
+        run: |
+          cd Front
+          npm run test       
