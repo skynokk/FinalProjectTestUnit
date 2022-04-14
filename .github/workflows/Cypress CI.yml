@@ -29,7 +29,7 @@ jobs:
         run: |
           cd Front
           npm ci
-      - name: IDémarrage du projet
+      - name: Démarrage du projet
         run: |
           cd Front
           npm start &
