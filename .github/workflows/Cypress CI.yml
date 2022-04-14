@@ -29,6 +29,6 @@ jobs:
         run: |
           cd Front
           npm ci
-          npm run start:ci &
-          npx cypress run --browser firefox
+          npm start
+          npx cypress run --browser chrome
     
