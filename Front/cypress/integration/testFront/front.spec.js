@@ -1,4 +1,15 @@
 describe("ProjetFinal", () => {
+    it("Test read product", () => {
+        cy.visit("http://localhost:3000");
+        cy.wait(7000);
+        cy.contains("Aller sur panier");
+        cy.contains("Figurine de Summer Smith").click();
+        cy.contains("Ajouter au panier")
+        cy.contains("Retour").click();
+        cy.wait(7000);
+        cy.contains("Aller sur panier");
+      });
+
     it("Test add product", () => {
       cy.visit("http://localhost:3000");
       cy.wait(7000);
