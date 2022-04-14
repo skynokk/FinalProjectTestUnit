@@ -32,7 +32,7 @@ jobs:
       - name: IDémarrage du projet
         run: |
           cd Front
-          npm start
+          npm start &
       - name: Lancement test Cypress
         run: |
           cd Front
