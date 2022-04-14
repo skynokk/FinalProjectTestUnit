@@ -46,6 +46,5 @@ test("load product", async () => {
     }
     );
     const { products } = result.current;
-    console.log(products)
     expect(products).toEqual({"products": [{"id": 1, "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg", "name": "Rick Sanchez", "price": 20, "quantity": 20}, {"id": 15, "image": "https://rickandmortyapi.com/api/character/avatar/15.jpeg", "name": "Alien Rick", "price": 20, "quantity": 20}, {"id": 3, "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg", "name": "Summer Smith", "price": 67.6, "quantity": 20}]})
 });

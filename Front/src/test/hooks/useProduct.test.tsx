@@ -54,5 +54,4 @@ test('add products', async () => {
         await addProduct();
     });
     const { message } = result.current;
-    console.log(message);
 });
