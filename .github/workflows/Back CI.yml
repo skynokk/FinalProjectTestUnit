@@ -33,28 +33,28 @@ jobs:
           docker-compose up -d
       - name: Docker PS
         run: docker ps -a
-      - name: Install composer dependencies
+      - name: Installation Composer
         run: |
           cd Back
           docker-compose exec -T app bash
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      - name: Migration TEST
+      - name: Migration env=test
         run: |
           cd Back
-          php app/console doctrine:database:create --env=test
-          php app/console doctrine:migrations:migrate -n --env=test
+          php bin/console doctrine:database:create --env=test
+          php bin/console doctrine:migrations:migrate -n --env=test
       - name: Migration
         run: |
           cd Back
           docker-compose exec -T app bash
-          php app/console doctrine:migration:migrate
+          php bin/console doctrine:migration:migrate
       - name: Doctrine
         run: |
           cd Back
           docker-compose exec -T app bash
-          php app/console doctrine:fixtures:load
+          php bin/console doctrine:fixtures:load
       - name: Lancement des test
         run: |
           cd Back
           docker-compose exec -T app bash
-          php app/phpunit
+          php bin/phpunit
