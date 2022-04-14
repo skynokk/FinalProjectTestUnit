@@ -26,18 +26,13 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Lancement test CYPRESS
-        run: |
-          cd Front
-          npm ci
-          npm start &
-          # npx cypress run --browser chrome
-          # npm run cypress:open
-      - name: Run blog test
-        uses: cypress-io/github-action@v1
         with:
           start: |
             cd Front
             npm ci
             npm start
+            npx cypress run --browser chrome
+            npm run cypress:open
           wait-on: 'http://localhost:3000'
           config: baseUrl=https://localhost:3000
+
