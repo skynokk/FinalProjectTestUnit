@@ -30,4 +30,5 @@ jobs:
         run: |
           cd Back
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          php bin/phpunit
           composer test
