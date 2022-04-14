@@ -29,6 +29,9 @@ jobs:
       - name: Lancement test Front
         run: |
           cd Front
-          npm install
+          npm ci
           npm run test
-          npm run cypress:open
+          npm start &
+          npx cypress run --browser chrome
+      # npm run cypress:open
+          
