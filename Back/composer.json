@@ -90,7 +90,7 @@
       "@auto-scripts"
     ],
     "test": [
-      "./vendor/bin/phpunit --coverage-html coverage --coverage-clover coverage.xml"
+      "XDEBUG_MODE=coverage ./vendor/bin/phpunit  --coverage-text=out/"
     ]
   },
   "conflict": {
