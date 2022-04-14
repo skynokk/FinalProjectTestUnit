@@ -25,15 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Lancement test CYPRESS
-        uses: cypress-io/github-action@v1
-        with:
-          start: |
-            cd Front
-            npm ci
-            npm start
-            npx cypress run --browser chrome
-            npm run cypress:open
-          wait-on: 'http://localhost:3000'
-          config: baseUrl=https://localhost:3000
-
+      - name: Lancement test Front
+        run: |
+          cd Front
+          npm ci
+          npm run start:ci &
+          npx cypress run --browser firefox
+    
