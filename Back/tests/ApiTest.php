@@ -97,6 +97,18 @@ class ApiTest extends WebTestCase
         $this->assertEquals($responseData, ["id"=> 1, "products"=> [0 => $this->dataGlobal]]);
     }
 
+    public function testAddProductToCart2()
+    {
+        $client = static::createClient();
+        $client->jsonRequest('POST', '/api/cart/'.$this->dataGlobal["id"], $this->dataGlobal);
+        $response = $client->getResponse();
+        $this->assertResponseIsSuccessful();
+        $this->assertJson($response->getContent());
+        $responseData = json_decode($response->getContent(), true);
+
+        $this->assertEquals(sizeof($responseData["products"]), 1);
+    }
+
     public function testAddProductToCartErrorQuantity()
     {
         $client = static::createClient();
