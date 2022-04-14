@@ -32,6 +32,6 @@ jobs:
           npm ci
           npm run test
           npm start &
-          npx cypress run --browser chrome
-      # npm run cypress:open
+          # npx cypress run --browser chrome
+          # npm run cypress:open
           
