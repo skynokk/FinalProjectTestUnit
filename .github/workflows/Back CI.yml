@@ -52,4 +52,4 @@ jobs:
         run: |
           cd Back
           docker-compose exec -T app bash
-          php bin/phpunit
+          composer test
