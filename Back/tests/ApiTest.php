@@ -97,6 +97,24 @@ class ApiTest extends WebTestCase
         $this->assertEquals($responseData, ["id"=> 1, "products"=> [0 => $this->dataGlobal]]);
     }
 
+    public function testAddProductToCartErrorQuantity()
+    {
+        $client = static::createClient();
+        $client->jsonRequest('POST', '/api/cart/'.$this->dataGlobal["id"], [
+            "id" => 21,
+            "name" => "API TEST",
+            "price" => "15",
+            "quantity" => "15",
+            "image" => "https://rickandmortyapi.com/api/character/avatar/21.jpeg"
+        ]);
+        $response = $client->getResponse();
+        $this->assertResponseIsSuccessful();
+        $this->assertJson($response->getContent());
+        $responseData = json_decode($response->getContent(), true);
+
+        $this->assertEquals($responseData, ["error" => "too many"]);
+    }
+
     public function testFindCart()
     {
         $client = static::createClient();
