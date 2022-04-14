@@ -47,7 +47,7 @@ jobs:
         run: |
           cd Back
           docker-compose exec -T app bash
-          docker-compose exec -T app php bin/console doctrine:fixtures:load -n --env=test
+          php bin/console doctrine:fixtures:load -n --env=test
       - name: Lancement des test
         run: |
           cd Back
