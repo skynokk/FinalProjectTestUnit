@@ -34,6 +34,7 @@ jobs:
           docker-compose exec -T app bash
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
           php bin/console doctrine:migration:migrate
+          yes
           php bin/console doctrine:fixtures:load
+          yes
           php bin/phpunit
-          composer test
