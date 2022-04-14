@@ -26,18 +26,28 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a set of commands using the runners shell
-      - name: Dossier Back
-        run: cd Back
       - name: Installation Docker
         run: |
+          cd Back
           docker-compose build
           docker-compose up -d
-          docker-compose exec -T app bash
       - name: Install composer dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: |
+          cd Back
+          docker-compose exec -T app bash
+          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Migration
-        run: php bin/console doctrine:migration:migrate
+        run: |
+          cd Back
+          docker-compose exec -T app bash
+          php bin/console doctrine:migration:migrate
       - name: Doctrine
-        run: php bin/console doctrine:fixtures:load
+        run: |
+          cd Back
+          docker-compose exec -T app bash
+          php bin/console doctrine:fixtures:load
       - name: Lancement des test
-        run: php bin/phpunit
+        run: |
+          cd Back
+          docker-compose exec -T app bash
+          php bin/phpunit
