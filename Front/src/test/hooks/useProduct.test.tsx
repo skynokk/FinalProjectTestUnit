@@ -1,8 +1,8 @@
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { renderHook, act } from "@testing-library/react-hooks";
-import useProduct from "../hooks/useProduct";
-import { Product } from "../App";
+import useProduct from "../../hooks/useProduct";
+import { Product } from "../../App";
 
 
 const server = setupServer(
