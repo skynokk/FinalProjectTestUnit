@@ -1,10 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-variables:
-  DATABASE_URL: mysql://root:toor@127.0.0.1:3306/lesson?
-  DB_PASSWORD: toor
-  DB_DATABASE: lesson
-  DB_USERNAME: root
-  
+
 name: Back CI
 
 # Controls when the workflow will run
