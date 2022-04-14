@@ -40,6 +40,7 @@ jobs:
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Migration TEST
         run: |
+          cd Back
           php bin/console doctrine:database:drop --force --env=test
           php bin/console doctrine:database:create --env=test
           php bin/console doctrine:migrations:migrate -n --env=test
