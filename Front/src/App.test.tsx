@@ -34,4 +34,3 @@ test('renders product link', () => {
   const linkElement = screen.getByText(/Ajouter au panier/i);
   expect(linkElement).toBeInTheDocument();
 });
-
