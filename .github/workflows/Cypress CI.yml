@@ -43,7 +43,7 @@ jobs:
           cd Front
           npm start &
       - name: Lancement test Cypress
-        run: |
+        uses: |
           cd Front
-          npx cypress run --headless --browser chrome
+          cypress-io/github-action@v2
     
