@@ -42,8 +42,7 @@ jobs:
         run: |
           cd Front
           npm start &
+      - run: cd Front
       - name: Lancement test Cypress
-        uses: |
-          cd Front
-          cypress-io/github-action@v2
+        uses: cypress-io/github-action@v2
     
