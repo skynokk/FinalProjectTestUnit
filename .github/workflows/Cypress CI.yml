@@ -38,12 +38,10 @@ jobs:
         run: |
           cd Front
           npm ci
-      - name: Démarrage du projet
-        run: |
-          cd Front
-          npm start &
       - name: Lancement test Cypress
         uses: cypress-io/github-action@v2
         with:
+          install: false
           working-directory: Front
+          start: npm start
     
