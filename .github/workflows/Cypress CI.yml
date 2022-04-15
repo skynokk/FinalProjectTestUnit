@@ -42,7 +42,8 @@ jobs:
         run: |
           cd Front
           npm start &
-      - run: cd Front
       - name: Lancement test Cypress
         uses: cypress-io/github-action@v2
+        with:
+          working-directory: Front
     
