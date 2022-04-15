@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import logo from "./logo.svg";
 import "./App.css";
 import Home from "./components/Home";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 
-export const endpoint = "http://127.0.0.1:8000/api";
+export const endpoint = "http://localhost:8000/api";
 export type Product = {
   id: number;
   name: string;
