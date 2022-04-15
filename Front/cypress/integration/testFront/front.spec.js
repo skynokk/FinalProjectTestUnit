@@ -1,4 +1,6 @@
 describe("ProjetFinal", () => {
+  Cypress.config('defaultCommandTimeout', 10000);
+
   it("Test button Panier", () => {
     cy.visit("http://127.0.0.1:3000");
     cy.contains("Aller sur panier");
@@ -6,26 +8,32 @@ describe("ProjetFinal", () => {
 
   it("Test read product", () => {
     cy.visit("http://localhost:3000");
-    cy.wait(60000);
+    cy.wait(30000
+      );
     cy.contains("Aller sur panier");
     cy.contains("Figurine de Summer Smith").click();
     cy.contains("Ajouter au panier")
     cy.contains("Retour").click();
-    cy.wait(60000);
+    cy.wait(30000
+      );
     cy.contains("Aller sur panier");
   });
 
   it("Test add product", () => {
     cy.visit("http://127.0.0.1:3000");
-    cy.wait(60000);
+    cy.wait(30000
+      );
     cy.contains("Figurine de Summer Smith").click();
     cy.contains("Ajouter au panier").click();
-    cy.wait(60000);
+    cy.wait(30000
+      );
     cy.contains("Enregistré dans le panier")
     cy.contains("Retour").click();
-    cy.wait(60000);
+    cy.wait(30000
+      );
     cy.contains("Aller sur panier").click();
-    cy.wait(60000);
+    cy.wait(30000
+      );
     cy.contains("Figurine de Summer Smith");
   });
 
