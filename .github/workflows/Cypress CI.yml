@@ -45,5 +45,5 @@ jobs:
       - name: Lancement test Cypress
         run: |
           cd Front
-          npx cypress run --browser chrome
+          npx cypress run --headless --browser chrome
     
