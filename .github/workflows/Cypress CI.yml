@@ -25,6 +25,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name : Lancement du Back
+        run : |
+          cd Back
+          docker-compose build
+          docker-compose up -d
+          docker-compose exec -T app bash
+          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          php bin/console doctrine:database:create --env=test
+          php bin/console doctrine:migrations:migrate -n --env=test
+          php bin/console doctrine:fixtures:load -n --env=test
       - name: Installation des dépendances
         run: |
           cd Front
