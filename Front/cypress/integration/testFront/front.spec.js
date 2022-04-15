@@ -22,14 +22,12 @@ describe("ProjetFinal", () => {
     cy.wait(30000);
     cy.contains("Figurine de Summer Smith").click();
     cy.contains("Ajouter au panier").click();
-    cy.wait(30000
-      );
+    cy.wait(30000);
     cy.contains("Enregistré dans le panier")
     cy.contains("Retour").click();
     cy.wait(30000);
     cy.contains("Aller sur panier").click();
-    cy.wait(30000
-      );
+    cy.wait(30000);
     cy.contains("Figurine de Summer Smith");
   });
 
