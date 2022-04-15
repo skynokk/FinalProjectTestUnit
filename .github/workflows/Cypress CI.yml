@@ -31,7 +31,7 @@ jobs:
           docker-compose build
           docker-compose up -d
           docker-compose exec -T app bash
-          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          composer install
           php bin/console doctrine:migrations:migrate
           php bin/console doctrine:fixtures:load --no-interaction
       - name: Installation des dépendances
