@@ -1,9 +1,17 @@
+import ReactDOM from "react-dom";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { renderHook, act } from "@testing-library/react-hooks";
 import useProduct from "../../hooks/useProduct";
-import { Product } from "../../App";
+import { Product as ProductApp } from "../../App";
+import Product from "../../components/Product";
+import { screen } from "@testing-library/react";
 
+let container: any;
+beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+});
 
 const server = setupServer(
     rest.post(
@@ -40,7 +48,7 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 test('add products', async () => {
-    const addProducts: Product = {
+    const addProducts: ProductApp = {
         id: 1,
         name: 'Rick Sanchez',
         price: '45.6',
@@ -54,4 +62,15 @@ test('add products', async () => {
         await addProduct();
     });
     const { message } = result.current;
+});
+
+test('Test component Product', async () => {
+    act(() => {
+        ReactDOM.render(<Product setRoute={() => { }} data={{
+            image: "",
+            name: "Rick",
+            quantity: 10
+        }} />, container);
+    });
+    screen.getByText(/Figurine de Rick/i);
 });

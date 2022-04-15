@@ -2,6 +2,8 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { renderHook, act } from "@testing-library/react-hooks";
 import useHome from "../../hooks/useHome";
+import Cart from "../../components/Cart";
+import { render, screen } from "@testing-library/react";
 
 const server = setupServer(
     rest.get(
@@ -46,5 +48,32 @@ test("load product", async () => {
     }
     );
     const { products } = result.current;
-    expect(products).toEqual({"products": [{"id": 1, "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg", "name": "Rick Sanchez", "price": 20, "quantity": 20}, {"id": 15, "image": "https://rickandmortyapi.com/api/character/avatar/15.jpeg", "name": "Alien Rick", "price": 20, "quantity": 20}, {"id": 3, "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg", "name": "Summer Smith", "price": 67.6, "quantity": 20}]})
+    expect(products).toEqual({
+        "products": [{
+            "id": 1,
+            "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+            "name": "Rick Sanchez",
+            "price": 20,
+            "quantity": 20
+        },
+        {
+            "id": 15,
+            "image": "https://rickandmortyapi.com/api/character/avatar/15.jpeg",
+            "name": "Alien Rick",
+            "price": 20, "quantity": 20
+        },
+        {
+            "id": 3,
+            "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+            "name": "Summer Smith",
+            "price": 67.6,
+            "quantity": 20
+        }]
+    })
+});
+
+test('renders return link', () => {
+    render(<Cart setRoute={function (cart): void { }} />);
+    const linkElement = screen.getByText(/Retour/i);
+    expect(linkElement).toBeInTheDocument();
 });

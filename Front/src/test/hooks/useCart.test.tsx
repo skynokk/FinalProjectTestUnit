@@ -2,8 +2,16 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { renderHook, act } from '@testing-library/react-hooks'
 import useCart from "../../hooks/useCart";
-import { Product } from "../../App";
+import ReactDOM from "react-dom";
+import { screen } from '@testing-library/react';
+import { Product as ProductApp } from "../../App";
+import Product from "../../components/Product";
 
+let container: any;
+beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+});
 const server = setupServer(
     rest.get(
         "http://localhost:8000/api/cart",
@@ -70,11 +78,10 @@ test("load cart", async () => {
     await act(async () => {
         await loadCart()
     });
-    const { products } = result.current;
 })
 
 test("remove to cart", async () => {
-    const deleteCart: Product = {
+    const deleteCart: ProductApp = {
         id: 15,
         name: 'Alien Rick',
         price: '20',
@@ -87,5 +94,15 @@ test("remove to cart", async () => {
     await act(async () => {
         await removeToCart(deleteCart);
     });
-    const { message } = result.current;
+});
+
+test('Test component Cart', async () => {
+    act(() => {
+        ReactDOM.render(<Product setRoute={() => { }} data={{
+            image: "",
+            name: "Rick",
+            quantity: 10
+        }} />, container);
+    });
+    screen.getAllByText(/Ajouter au panier/i);
 });
