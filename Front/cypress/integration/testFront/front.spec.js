@@ -1,7 +1,6 @@
 describe("ProjetFinal", () => {
-  it("Test text", () => {
+  it("Test button Panier", () => {
     cy.visit("http://localhost:3000");
-    cy.wait(20000);
     cy.contains("Aller sur panier");
   });
 
